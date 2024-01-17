@@ -47,7 +47,7 @@ a {
 
 .Nav-Bar a:active {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .Nav-Bar ul li {

@@ -1,5 +1,23 @@
 ---
+import '../styles/global.css';
 
+const pageTitle = "About Me";
+
+const identity = {
+    firstName: "Saksham",
+    country: "Canada",
+    occupation: "Student",
+    hobbies: ["Coding", "Machine Learning", "Badminton"],
+};
+
+const happy = true;
+const finished = false;
+const goal = 7;
+
+const skills = ["Python", "Java", "Swift", "GDScript", "Pytorch", "OpenCV", "ROCm + CUDA", "AI / ML", "HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const skillColour = "white";
+const fontWeight = "bold";
 ---
 
 <html lang="en">
@@ -8,7 +26,19 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>About</title>
+		<title>{pageTitle}</title>
+
+        <style define:vars={{skillColour, fontWeight}}>
+            h1 {
+                font-size: 4rem;
+            }
+
+            .skill {
+                color: var(--skillColour);
+                font-weight: var(--fontWeight);
+            }
+        </style>
+
 	</head>
 	<body style="font-family: Arial;">
 		<h1>Website By Saksham Goel<br>About Me!</h1>
@@ -19,5 +49,25 @@
         <p>I am working through Astro's introductory tutorial. This is the second page on my Astro powered site!!</p>
 
         <p>This site will update as I complete more of the tutorial, so keep checking back and see how this site evolves!</p>
+
+        <p>Here are a few facts about me:</p>
+
+        <ul>
+            <li>My name is {identity.firstName}.</li>
+            <li>I live in {identity.country} and I am a {identity.occupation}.</li>
+            {identity.hobbies.length >= 2 &&
+                <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+            }
+          </ul>
+          <p>My skills are:</p>
+          <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+          </ul>
+
 	</body>
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {goal <= 7 ? <p>My goal is to finish within 7 days.</p> : <p>My goal is not within 7 days.</p>}
 </html>

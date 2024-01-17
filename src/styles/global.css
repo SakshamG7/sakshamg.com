@@ -24,3 +24,39 @@ h1 {
 a {
     color: white;
 }
+
+.Nav-Bar {
+    background-color: rgb(0, 200, 255);
+    width:100%;
+}
+
+.Nav-Bar a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.Nav-Bar a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.Nav-Bar a:hover {
+    color: coral;
+    text-decoration: none;
+}
+
+.Nav-Bar a:active {
+    color: white;
+    text-decoration: underline;
+}
+
+.Nav-Bar ul li {
+    display: inline;
+    font-size: xx-large;
+    font-weight: bold;
+    margin: 0 40px;
+}
+
+.Nav-Bar ul {
+    padding: 10px 0;
+}

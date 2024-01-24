@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 const pageTitle = "About Me";
 
 const identity = {
@@ -37,7 +38,7 @@ const fontWeight = "bold";
 
 	</head>
 	<body style="font-family: Arial;">
-		<Navigation />
+		<Header />
 
 		<h1>Website By Saksham Goel<br>About Me!</h1>
 
@@ -53,16 +54,19 @@ const fontWeight = "bold";
             {identity.hobbies.length >= 2 &&
                 <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
             }
-          </ul>
-          <p>My skills are:</p>
-          <ul>
+        </ul>
+
+        <p>My skills are:</p>
+        <ul>
             {skills.map((skill) => <li class="skill">{skill}</li>)}
-          </ul>
+        </ul>
 
+        {happy && <p>I am happy to be learning Astro!</p>}
+
+        {finished && <p>I finished this tutorial!</p>}
+
+        {goal <= 7 ? <p>My goal is to finish within 7 days.</p> : <p>My goal is not within 7 days.</p>}
+
+        <Footer />
 	</body>
-    {happy && <p>I am happy to be learning Astro!</p>}
-
-    {finished && <p>I finished this tutorial!</p>}
-
-    {goal <= 7 ? <p>My goal is to finish within 7 days.</p> : <p>My goal is not within 7 days.</p>}
 </html>

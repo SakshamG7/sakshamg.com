@@ -1,0 +1,19 @@
+---
+const platform = "github";
+const username = "SakshamG7";
+import Social from './Social.astro'; // using components within components!! this is really useful!
+---
+
+<style>
+    footer {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+</style>
+
+<footer>
+    <p>Check out my latest projects at <a href={`https://www.${platform}.com/${username}`}>{platform}</a>!</p>
+    <Social platform="github" username="SakshamG7" />
+    <Social platform="youtube" username="SakshamG7" />
+</footer>

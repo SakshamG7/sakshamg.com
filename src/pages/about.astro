@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-
+import Navigation from '../components/Navigation.astro';
 const pageTitle = "About Me";
 
 const identity = {
@@ -37,21 +37,7 @@ const fontWeight = "bold";
 
 	</head>
 	<body style="font-family: Arial;">
-        <div class="Nav-Bar">
-			<center>
-				<ul>
-					<a href="/">
-						<li>Home</li>
-					</a>
-					<a href="/about/">
-						<li>About</li>
-					</a>
-					<a href="/blog/">
-						<li>Blog</li>
-					</a>
-				</ul>
-			</center>
-		</div>
+		<Navigation />
 
 		<h1>Website By Saksham Goel<br>About Me!</h1>
 

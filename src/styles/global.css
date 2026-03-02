@@ -24,7 +24,7 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: 1100px;
-  padding: 0 1.5rem;
+  padding: 6rem 1.5rem 0;
   line-height: 1.6;
 }
 
@@ -85,29 +85,7 @@ code {
 .stagger-3 { animation-delay: 0.3s; opacity: 0; }
 .stagger-4 { animation-delay: 0.4s; opacity: 0; }
 
-/* Nav styles */
-.nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 5rem;
-  padding: 1.5rem;
-  background: rgba(28, 25, 23, 0.5);
-  backdrop-filter: blur(10px);
-  border-radius: 999px;
-  border: 1px solid var(--border-color);
-}
-
-.nav-links a {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  text-transform: lowercase;
-  color: #a8a29e;
-}
-
-.nav-links a:hover {
-  color: var(--accent-color);
-}
+/* Nav styles removed as they are now scoped in Header.astro */
 
 /* Project Cards */
 .project-grid {

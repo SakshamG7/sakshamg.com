@@ -6,11 +6,14 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler dev",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.5",
     "astro": "^5.18.0"
+  },
+  "overrides": {
+    "wrangler": "^4.69.0"
   }
 }

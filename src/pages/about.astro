@@ -12,7 +12,7 @@ const education = [
     location: "Rochester, NY, USA",
     period: "Aug 2025 - Present",
     gpa: "4.0/4.0",
-    highlights: ["Electrical Team Member @ RIT Formula Racing (PCB Design)", "RIT AI Club Member", "RIT Cybersecurity Club Member"]
+    highlights: ["Electrical Team Member @ RIT Formula Racing (PCB Design)", "RIT AI Club Member", "RIT Cybersecurity Club Member", "RIT Chess Club Member", "RIT Badminton Club Member"]
   }
 ];
 
@@ -71,7 +71,7 @@ const certifications = [
     <main class="animate">
       <section class="intro-section">
         <h1>Learn. Challenge. <span class="text-gradient">Apply. Create.</span></h1>
-        <div class="story-content stagger-1">
+        <div class="story-content animate stagger-1">
           <p>
             My fascination with technology began at age six, when my uncle told me that <strong>"computers run on 1s and 0s."</strong> 
             That single line sparked a lifelong curiosity. From reviving a Windows 95 laptop to founding my own AI solutions company, 
@@ -86,7 +86,7 @@ const certifications = [
 
       <div class="about-grid">
         <div class="main-col">
-          <section class="section stagger-2">
+          <section class="section animate stagger-2">
             <h2>Experience</h2>
             {experience.map(exp => (
               <div class="card">
@@ -102,7 +102,7 @@ const certifications = [
             ))}
           </section>
 
-          <section class="section stagger-3">
+          <section class="section animate stagger-3">
             <h2>Education</h2>
             {education.map(edu => (
               <div class="card">
@@ -111,16 +111,17 @@ const certifications = [
                   <span class="date">{edu.period}</span>
                 </div>
                 <p class="card-desc">{edu.degree} | GPA: {edu.gpa}</p>
-                <div class="tags">
-                  {edu.highlights.map(h => <span class="tag">{h}</span>)}
-                </div>
+                <h4 class="edu-sub-title">Extracurriculars</h4>
+                <ul>
+                  {edu.highlights.map(h => <li>{h}</li>)}
+                </ul>
               </div>
             ))}
           </section>
         </div>
 
         <div class="side-col">
-          <section class="section stagger-4">
+          <section class="section animate stagger-4">
             <h2>Involvement</h2>
             <div class="mini-cards">
               {extraCurriculars.map(ex => (
@@ -132,7 +133,7 @@ const certifications = [
             </div>
           </section>
 
-          <section class="section stagger-4" style="animation-delay: 0.5s">
+          <section class="section animate stagger-4" style="animation-delay: 0.5s">
             <h2>Honors</h2>
             <div class="cert-list">
               {certifications.map(cert => (
@@ -149,10 +150,6 @@ const certifications = [
 
     <Footer />
     
-    <script>
-      import "../scripts/menu.js";
-    </script>
-
     <style>
       .intro-section {
         margin-bottom: 5rem;
@@ -214,6 +211,16 @@ const certifications = [
       .cert-item { display: flex; flex-direction: column; font-size: 0.9rem; }
       .cert-item strong { color: #e7e5e4; }
       .cert-item span { color: #78716c; font-family: var(--font-mono); }
+      
+      .edu-sub-title {
+        color: var(--accent-color);
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+      }
 
       @media (max-width: 900px) {
         .about-grid { grid-template-columns: 1fr; }

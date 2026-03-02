@@ -1,4 +1,11 @@
 import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: 'https://sakshamg.com',
+  output: 'static',
+  adapter: cloudflare({
+    imageService: 'cloudflare'
+  })
+});

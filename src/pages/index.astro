@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-const pageTitle = "Home";
+const pageTitle = "Saksham Goel | CS @ RIT";
 ---
 
 <html lang="en">
@@ -13,13 +13,270 @@ const pageTitle = "Home";
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 	</head>
-	<body style="font-family: Arial;">
+	<body>
 		<Header />
-		<h1>Website By Saksham Goel<br>Home Sweet Home</h1>
-		<p>Welcome to my first Astro powered website!<br>I plan on improving my older websites based on flask to this new framework!</p>
+		
+		<section class="hero animate">
+			<div class="hero-content">
+				<div class="profile-frame animate stagger-1">
+					<img src="https://media.licdn.com/dms/image/v2/D4E35AQHCuxccW-TEAw/profile-framedphoto-shrink_400_400/B4EZyq0blnHkAc-/0/1772392397373?e=1773090000&v=beta&t=WIh1jINp88Po-tBXOmX8DjW7Z_ndsX1w3nGaStsMnt8" alt="Saksham Goel" />
+				</div>
+				<div class="hero-text">
+					<div class="badge animate stagger-1">CS @ RIT | Class of 2030</div>
+					<h1 class="animate stagger-2">Saksham Goel</h1>
+					<p class="subtitle animate stagger-3">Software Engineer & <span class="text-gradient">AI Researcher</span></p>
+					<p class="description animate stagger-4">
+						Building the future of <strong>Intelligent Systems</strong>. Founder of <strong>AceIQ</strong>, specialized in Mixture of Experts (MoE) architectures, 
+						high-performance backend systems, and automated trading algorithms.
+					</p>
+					<div class="cta-group animate stagger-4">
+						<a href="/projects/" class="btn">View Projects</a>
+						<a href="/about/" class="btn secondary">Full Story</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="stats-row animate stagger-4">
+			<div class="stat-item">
+				<span class="stat-value">4.0</span>
+				<span class="stat-label">Cumulative GPA</span>
+			</div>
+			<div class="stat-divider"></div>
+			<div class="stat-item">
+				<span class="stat-value">2500+</span>
+				<span class="stat-label">AceChess Elo</span>
+			</div>
+			<div class="stat-divider"></div>
+			<div class="stat-item">
+				<span class="stat-value">5+</span>
+				<span class="stat-label">Businesses Built</span>
+			</div>
+		</section>
+
+		<section class="motto-strip animate">
+			<div class="motto-container">
+				<span class="motto-item">Learn</span>
+				<span class="motto-separator">&bull;</span>
+				<span class="motto-item">Challenge</span>
+				<span class="motto-separator">&bull;</span>
+				<span class="motto-item">Apply</span>
+				<span class="motto-separator">&bull;</span>
+				<span class="motto-item">Create</span>
+			</div>
+		</section>
+
+		<section class="featured-projects animate">
+			<div class="section-header">
+				<h2>Core <span class="text-gradient">Innovations</span></h2>
+				<a href="/projects/" class="view-all">See all projects &rarr;</a>
+			</div>
+			<div class="project-grid">
+				<div class="project-card animate stagger-1">
+					<div class="card-glow"></div>
+					<span class="category">AI Engineering</span>
+					<h3>AceChess</h3>
+					<p>NN Chess Engine inspired by AlphaZero. Features a custom MoE & ResNet architecture for lightning-fast inference.</p>
+					<div class="tags">
+						<span class="tag">PyTorch</span>
+						<span class="tag">Reinforcement</span>
+					</div>
+				</div>
+				<div class="project-card animate stagger-2">
+					<div class="card-glow"></div>
+					<span class="category">Natural Language</span>
+					<h3>AceLM</h3>
+					<p>Training LLMs from scratch to analyze predictive power and novel architectures in NLP.</p>
+					<div class="tags">
+						<span class="tag">LLM</span>
+						<span class="tag">NLP</span>
+					</div>
+				</div>
+				<div class="project-card animate stagger-3">
+					<div class="card-glow"></div>
+					<span class="category">Quantitative Dev</span>
+					<h3>AceMarket</h3>
+					<p>AI Trading yielding 20-40% annual returns through robust sentiment analysis and market history.</p>
+					<div class="tags">
+						<span class="tag">ML</span>
+						<span class="tag">Finance</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<Footer />
 		<script>
 			import "../scripts/menu.js";
 		</script>
+
+		<style>
+			.hero {
+				padding: 6rem 0;
+			}
+			.hero-content {
+				display: flex;
+				align-items: center;
+				gap: 5rem;
+				flex-wrap: wrap;
+			}
+			.profile-frame {
+				width: 300px;
+				height: 300px;
+				border-radius: 30px;
+				overflow: hidden;
+				border: 1px solid var(--border-color);
+				box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+				position: relative;
+			}
+			.profile-frame::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border: 2px solid var(--accent-color);
+				border-radius: 30px;
+				opacity: 0.3;
+			}
+			.profile-frame img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			.hero-text {
+				flex: 1;
+				min-width: 300px;
+			}
+			.badge {
+				display: inline-block;
+				background: var(--card-bg);
+				border: 1px solid var(--border-color);
+				padding: 0.5rem 1rem;
+				border-radius: 99px;
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				color: var(--accent-color);
+				margin-bottom: 1.5rem;
+			}
+			.subtitle {
+				font-size: 1.5rem;
+				font-weight: 700;
+				color: #e7e5e4;
+				margin: -1rem 0 1.5rem 0;
+			}
+			.description {
+				font-size: 1.25rem;
+				line-height: 1.8;
+				color: #a8a29e;
+				margin-bottom: 2.5rem;
+				max-width: 650px;
+			}
+			.cta-group {
+				display: flex;
+				gap: 1.5rem;
+			}
+			.btn {
+				background: var(--accent-color);
+				color: #fff;
+				padding: 1rem 2.5rem;
+				border-radius: 12px;
+				font-weight: 700;
+				transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+			}
+			.btn.secondary {
+				background: transparent;
+				color: #fff;
+				border: 1px solid var(--border-color);
+			}
+			.btn:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.3);
+			}
+
+			.stats-row {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				background: var(--card-bg);
+				border: 1px solid var(--border-color);
+				padding: 3rem;
+				border-radius: 24px;
+				margin: 4rem 0;
+			}
+			.stat-item {
+				text-align: center;
+				flex: 1;
+			}
+			.stat-value {
+				display: block;
+				font-size: 2.5rem;
+				font-weight: 800;
+				color: #fff;
+			}
+			.stat-label {
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				text-transform: uppercase;
+				color: #78716c;
+				letter-spacing: 0.1rem;
+			}
+			.stat-divider {
+				width: 1px;
+				height: 50px;
+				background: var(--border-color);
+			}
+
+			.motto-strip {
+				margin: 6rem 0;
+				text-align: center;
+			}
+			.motto-container {
+				font-family: var(--font-mono);
+				font-size: 2rem;
+				font-weight: 800;
+				letter-spacing: 0.3rem;
+				text-transform: uppercase;
+			}
+			.motto-separator {
+				color: var(--border-color);
+				margin: 0 1rem;
+			}
+
+			.section-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				margin-bottom: 3rem;
+			}
+			.view-all {
+				font-family: var(--font-mono);
+				font-weight: 600;
+				font-size: 0.9rem;
+			}
+			
+			.category {
+				font-family: var(--font-mono);
+				font-size: 0.7rem;
+				text-transform: uppercase;
+				color: var(--accent-color);
+				letter-spacing: 0.1rem;
+				margin-bottom: 0.5rem;
+				display: block;
+			}
+
+			@media (max-width: 768px) {
+				.hero-content {
+					flex-direction: column;
+					text-align: center;
+					gap: 3rem;
+				}
+				.description { margin-inline: auto; }
+				.cta-group { justify-content: center; }
+				.stats-row {
+					flex-direction: column;
+					gap: 2rem;
+				}
+				.stat-divider { display: none; }
+			}
+		</style>
 	</body>
 </html>

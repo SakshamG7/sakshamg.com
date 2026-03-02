@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Projects | Saksham Goel";
+
+const projects = [
+  {
+    title: "AceChess",
+    description: "Built a Google AlphaZero inspired Chess Engine with a custom homebuilt Mixture of Experts (MoE) and Residual Networks (ResNet) Architecture for optimal chess play and fast inference.",
+    tags: ["PyTorch", "AI", "Chess", "MoE"],
+    date: "Jan 2026"
+  },
+  {
+    title: "AceLM",
+    description: "Trained an LLM from scratch with another custom architecture. Deepened Knowledge about LLMs and Novel Custom Architectures to Analyze and Compare Language Predictive Power.",
+    tags: ["NLP", "PyTorch", "LLM", "Deep Learning"],
+    date: "Jan 2026"
+  },
+  {
+    title: "AceMarket & AceCrypto",
+    description: "Developed custom architectures analyzing financial reports, sentiment, and price history to predict market movements. Yielded 20-40% annual returns with a 53%-win rate on unseen data.",
+    tags: ["Finance", "ML", "Backtesting", "Python"],
+    date: "Dec 2025"
+  },
+  {
+    title: "AceSearch",
+    description: "Built a Search Engine and custom Ranking Algorithm to understand how Google’s Search Engine works.",
+    tags: ["Python", "Flask", "PostgreSQL", "Algorithms"],
+    date: "Jan 2025"
+  },
+  {
+    title: "UWaterloo AI Chatbot",
+    description: "Finetuned a Mistral-7B model using LoRA, achieving 98% accuracy on a test set of 200 questions about UWaterloo programs.",
+    tags: ["Mistral", "LoRA", "Fine-tuning", "ROCm"],
+    date: "Feb 2024"
+  },
+  {
+    title: "Geometry Trash & Spell 5",
+    description: "Published two mobile games to learn the Godot Engine and Xcode. Available on Apple App Store and Google Play Store.",
+    tags: ["Godot", "Xcode", "Swift", "GameDev"],
+    date: "Sep 2023"
+  }
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    
+    <main class="animate">
+      <h1>Selected <span class="text-gradient">Projects</span></h1>
+      <p class="subtitle">A collection of my work in AI, Software Engineering, and Game Development.</p>
+
+      <div class="project-grid">
+        {projects.map((project, index) => (
+          <div class={`project-card animate stagger-${(index % 4) + 1}`}>
+            <div class="project-header">
+              <span class="project-date">{project.date}</span>
+              <h3>{project.title}</h3>
+            </div>
+            <p>{project.description}</p>
+            <div class="tags">
+              {project.tags.map(tag => <span class="tag">{tag}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
+
+    <Footer />
+    
+    <script>
+      import "../scripts/menu.js";
+    </script>
+
+    <style>
+      .subtitle {
+        font-size: 1.25rem;
+        color: #a8a29e;
+        margin-bottom: 3rem;
+      }
+      .project-header {
+        margin-bottom: 1rem;
+      }
+      .project-date {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .project-card h3 {
+        margin: 0.25rem 0 0 0;
+      }
+      .project-card p {
+        color: #d6d3d1;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: auto;
+      }
+    </style>
+  </body>
+</html>

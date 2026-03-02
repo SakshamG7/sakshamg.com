@@ -2,74 +2,222 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-const pageTitle = "About Me";
 
-const identity = {
-    firstName: "Saksham",
-    country: "Canada",
-    occupation: "Student",
-    hobbies: ["Coding", "Machine Learning", "Badminton"],
-};
+const pageTitle = "My Story | Saksham Goel";
 
-const happy = true;
-const finished = false;
-const goal = 7;
+const education = [
+  {
+    school: "Rochester Institute of Technology (RIT)",
+    degree: "B.Sc. in Computer Science",
+    location: "Rochester, NY, USA",
+    period: "Aug 2025 - Present",
+    gpa: "4.0/4.0",
+    highlights: ["Electrical Team Member @ RIT Formula Racing (PCB Design)", "RIT AI Club Member", "RIT Cybersecurity Club Member"]
+  }
+];
 
-const skills = ["Python", "Java", "Swift", "GDScript", "Pytorch", "OpenCV", "ROCm + CUDA", "AI / ML", "HTML", "CSS", "JavaScript", "C/C++/C#", "React", "Astro", "Writing Docs"];
+const experience = [
+  {
+    role: "Founder & CEO",
+    company: "AceIQ",
+    location: "Toronto, ON, Canada",
+    period: "Jun 2024 - Aug 2025",
+    description: "Built a bridge for businesses into the digital world through custom AI and web solutions.",
+    points: [
+      "Leveraged AWS (EC2, S3) for scalable backend infrastructures.",
+      "Implemented advanced Linux hardening and custom sandboxing for high-security environments.",
+      "Partnered with international clients like America's Ed and local gems like Spice & Saffron."
+    ]
+  }
+];
 
-const skillColour = "white";
-const fontWeight = "bold";
+const extraCurriculars = [
+  {
+    role: "Electrical Team Member",
+    org: "RIT Formula Racing",
+    desc: "Working on low-level PCB design and electrical systems for high-performance racing."
+  },
+  {
+    role: "Founder & President",
+    org: "Data Science & Machine Learning Club (WOSS)",
+    desc: "Taught PyTorch and ML algorithms to students, fostering a community of AI enthusiasts."
+  },
+  {
+    role: "Student Member",
+    org: "Oakville Youth Council",
+    desc: "Actively contributing to community improvement and positive local impact."
+  }
+];
+
+const certifications = [
+  { name: "Sir Isaac Newton Exam - Distinction (Top 25%)", issuer: "UWaterloo" },
+  { name: "Canadian Computing Competition - Distinction", issuer: "UWaterloo" },
+  { name: "Canadian Senior Math Contest - Distinction", issuer: "UWaterloo" },
+  { name: "Standard First Aid CPR/AED Level C", issuer: "Red Cross" }
+];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    
+    <main class="animate">
+      <section class="intro-section">
+        <h1>Learn. Challenge. <span class="text-gradient">Apply. Create.</span></h1>
+        <div class="story-content stagger-1">
+          <p>
+            My fascination with technology began at age six, when my uncle told me that <strong>"computers run on 1s and 0s."</strong> 
+            That single line sparked a lifelong curiosity. From reviving a Windows 95 laptop to founding my own AI solutions company, 
+            my path has been defined by a relentless drive to understand how things work at their most fundamental level.
+          </p>
+          <p>
+            Today, as a Computer Science student at <strong>RIT</strong>, I combine rigorous academic study with 
+            hands-on experimentation in SOTA AI, high-performance computing, and hardware engineering.
+          </p>
+        </div>
+      </section>
 
-        <style define:vars={{skillColour, fontWeight}}>
-            .skill {
-                color: var(--skillColour);
-                font-weight: var(--fontWeight);
-            }
-        </style>
+      <div class="about-grid">
+        <div class="main-col">
+          <section class="section stagger-2">
+            <h2>Experience</h2>
+            {experience.map(exp => (
+              <div class="card">
+                <div class="card-header">
+                  <h3>{exp.role} @ <span class="text-gradient">{exp.company}</span></h3>
+                  <span class="date">{exp.period}</span>
+                </div>
+                <p class="card-desc">{exp.description}</p>
+                <ul>
+                  {exp.points.map(p => <li>{p}</li>)}
+                </ul>
+              </div>
+            ))}
+          </section>
 
-	</head>
-	<body style="font-family: Arial;">
-		<Header />
+          <section class="section stagger-3">
+            <h2>Education</h2>
+            {education.map(edu => (
+              <div class="card">
+                <div class="card-header">
+                  <h3>{edu.school}</h3>
+                  <span class="date">{edu.period}</span>
+                </div>
+                <p class="card-desc">{edu.degree} | GPA: {edu.gpa}</p>
+                <div class="tags">
+                  {edu.highlights.map(h => <span class="tag">{h}</span>)}
+                </div>
+              </div>
+            ))}
+          </section>
+        </div>
 
-		<h1>Website By Saksham Goel<br>About Me!</h1>
+        <div class="side-col">
+          <section class="section stagger-4">
+            <h2>Involvement</h2>
+            <div class="mini-cards">
+              {extraCurriculars.map(ex => (
+                <div class="mini-card">
+                  <h4>{ex.org}</h4>
+                  <p>{ex.role}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-        <p>I am working through Astro's introductory tutorial. This is the second page on my Astro powered site!!</p>
+          <section class="section stagger-4" style="animation-delay: 0.5s">
+            <h2>Honors</h2>
+            <div class="cert-list">
+              {certifications.map(cert => (
+                <div class="cert-item">
+                  <strong>{cert.name}</strong>
+                  <span>{cert.issuer}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
 
-        <p>This site will update as I complete more of the tutorial, so keep checking back and see how this site evolves!</p>
+    <Footer />
+    
+    <script>
+      import "../scripts/menu.js";
+    </script>
 
-        <p>Here are a few facts about me:</p>
+    <style>
+      .intro-section {
+        margin-bottom: 5rem;
+        max-width: 800px;
+      }
+      .story-content p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #d6d3d1;
+        margin-bottom: 1.5rem;
+      }
+      
+      .about-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+      }
 
-        <ul>
-            <li>My name is {identity.firstName}.</li>
-            <li>I live in {identity.country} and I am a {identity.occupation}.</li>
-            {identity.hobbies.length >= 2 &&
-                <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-            }
-        </ul>
+      .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
 
-        <p>My skills are:</p>
-        <ul>
-            {skills.map((skill) => <li class="skill">{skill}</li>)}
-        </ul>
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 2rem;
+        border-radius: 20px;
+        margin-bottom: 2rem;
+      }
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        gap: 1rem;
+      }
+      .card-header h3 { margin: 0; font-size: 1.4rem; }
+      .date { font-family: var(--font-mono); color: var(--accent-color); font-size: 0.9rem; }
+      .card-desc { color: #a8a29e; font-weight: 600; margin-bottom: 1rem; }
+      
+      ul { padding-left: 1.2rem; }
+      li { color: #d6d3d1; margin-bottom: 0.5rem; font-size: 0.95rem; }
 
-        {happy && <p>I am happy to be learning Astro!</p>}
+      .mini-cards { display: flex; flex-direction: column; gap: 1rem; }
+      .mini-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 1.2rem;
+        border-radius: 12px;
+      }
+      .mini-card h4 { margin: 0; font-size: 1rem; color: var(--accent-color); }
+      .mini-card p { margin: 0.25rem 0 0 0; font-size: 0.9rem; color: #a8a29e; }
 
-        {finished && <p>I finished this tutorial!</p>}
+      .cert-list { display: flex; flex-direction: column; gap: 1.2rem; }
+      .cert-item { display: flex; flex-direction: column; font-size: 0.9rem; }
+      .cert-item strong { color: #e7e5e4; }
+      .cert-item span { color: #78716c; font-family: var(--font-mono); }
 
-        {goal <= 7 ? <p>My goal is to finish within 7 days.</p> : <p>My goal is not within 7 days.</p>}
-
-        <Footer />
-        <script>
-			import "../scripts/menu.js";
-		</script>
-	</body>
+      @media (max-width: 900px) {
+        .about-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </body>
 </html>

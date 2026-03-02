@@ -1,19 +1,63 @@
 ---
-const platform = "github";
-const username = "SakshamG7";
-import Social from './Social.astro'; // using components within components!! this is really useful!
+import Social from './Social.astro';
 ---
 
-<style>
-    footer {
-        display: flex;
-        gap: 1rem;
-        margin-top: 2rem;
-    }
-</style>
-
 <footer>
-    <p>Check out my latest projects at <a href={`https://www.${platform}.com/${username}`}>{platform}</a>!</p>
-    <Social platform="Github" username="SakshamG7" />
-    <!-- <Social platform="Youtube" username="@sakshamg7" /> coming soon -->
+  <div class="footer-content">
+    <div class="social-links">
+      <Social platform="github" username="SakshamG7" />
+      <Social platform="linkedin" username="in/sakshamg7" />
+    </div>
+    
+    <div class="aceiq-brand">
+      <p>Powered by <span class="text-gradient">AceIQ</span></p>
+      <small>High Performance AI & Digital Solutions</small>
+    </div>
+
+    <p class="copyright">&copy; {new Date().getFullYear()} Saksham Goel. Built with Astro & Hosted on Cloudflare Pages.</p>
+  </div>
 </footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border-color);
+    padding: 6rem 0 3rem;
+    margin-top: 4rem;
+  }
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .aceiq-brand {
+    text-align: center;
+    background: var(--card-bg);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  .aceiq-brand:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+  }
+  .aceiq-brand p {
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin: 0;
+  }
+  .aceiq-brand small {
+    color: #a8a29e;
+    font-size: 0.8rem;
+    letter-spacing: 0.05rem;
+  }
+  .copyright {
+    color: #78716c;
+    font-size: 0.9rem;
+  }
+</style>

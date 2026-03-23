@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const pageTitle = "Projects | Saksham Goel";
+const pageDescription = "Explore selected projects by Saksham Goel in AI, machine learning, software engineering, finance, and game development.";
 
 const projects = [
   {
@@ -51,6 +52,7 @@ const projects = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageDescription} />
     <title>{pageTitle}</title>
   </head>
   <body>

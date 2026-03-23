@@ -16,6 +16,7 @@ interface MarkdownPost {
 
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true })) as MarkdownPost[];
 const pageTitle = "Blog | Saksham Goel";
+const pageDescription = "Read Saksham Goel's blog posts on AI, computer science, engineering ideas, and lessons from building real projects.";
 ---
 
 <html lang="en">
@@ -24,6 +25,7 @@ const pageTitle = "Blog | Saksham Goel";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={pageDescription} />
 		<title>{pageTitle}</title>
 	</head>
 	<body>

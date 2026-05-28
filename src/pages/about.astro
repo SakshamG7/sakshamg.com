@@ -12,22 +12,75 @@ const education = [
     degree: "B.Sc. in Computer Science",
     location: "Rochester, NY, USA",
     period: "Aug 2025 - Present",
-    gpa: "4.0/4.0",
+    gpa: "Dean's List",
     highlights: ["Electrical Team Member @ RIT Formula Racing (PCB Design)", "RIT AI Club Member", "RIT Cybersecurity Club Member", "RIT Chess Club Member", "RIT Badminton Club Member"]
+  },
+  {
+    school: "White Oaks Secondary School",
+    degree: "High School Diploma",
+    location: "Oakville, ON, Canada",
+    period: "Sep 2021 - Jun 2025",
+    gpa: "Honor Roll",
+    highlights: ["Founder @ Data Science & Machine Learning Club", "Programmer & Builder @ Engineering/Robotics Club", "DECA Inc. Member"]
   }
 ];
 
 const experience = [
   {
-    role: "Founder & CEO",
+    role: "Software Engineer Intern",
+    company: "Angstrom NA LLC",
+    location: "Michigan, USA (On-site)",
+    period: "May 2026 - Present",
+    description: "Developing the Angstrom Company Website and implementing AI agents.",
+    points: [
+      "Developing the Angstrom Company Website using modern web technologies.",
+      "Creating and Deploying AI Agents to accelerate employee workflows.",
+      "Leveraging Web Development and Artificial Intelligence (AI) to optimize productivity."
+    ]
+  },
+  {
+    role: "Chief Executive Officer & Founder",
     company: "AceIQ",
-    location: "Toronto, ON, Canada",
-    period: "Jun 2024 - Aug 2025",
-    description: "Built a bridge for businesses into the digital world through custom AI and web solutions.",
+    location: "Oakville, ON, Canada (Hybrid)",
+    period: "May 2024 - Present",
+    description: "Building the bridge for businesses into the digital world through custom AI and web solutions.",
     points: [
       "Leveraged AWS (EC2, S3) for scalable backend infrastructures.",
       "Implemented advanced Linux hardening and custom sandboxing for high-security environments.",
       "Partnered with international clients like America's Ed and local gems like Spice & Saffron."
+    ]
+  },
+  {
+    role: "Student Member (Internship)",
+    company: "Oakville Youth Council",
+    location: "Oakville, ON, Canada (Hybrid)",
+    period: "Sep 2023 - Aug 2025",
+    description: "Helping to improve and make a positive impact on the local community.",
+    points: [
+      "Collaborated with community members and local non-profits to volunteer and support community service initiatives.",
+      "Contributed to planning and executing youth-led projects for community improvement."
+    ]
+  },
+  {
+    role: "Founder",
+    company: "Data Science and Machine Learning Club (WOSS)",
+    location: "Oakville, ON, Canada (On-site)",
+    period: "Jun 2024 - Jun 2025",
+    description: "Founded and led the club to teach PyTorch and machine learning concepts.",
+    points: [
+      "Taught PyTorch and ML algorithms to high school students, fostering a community of AI enthusiasts.",
+      "Developed hands-on curriculum covering data science, regression models, and neural networks."
+    ]
+  },
+  {
+    role: "Programmer & Builder (Internship)",
+    company: "White Oaks Engineering Club",
+    location: "Oakville, ON, Canada (Hybrid)",
+    period: "Sep 2023 - Jun 2025",
+    description: "Competitive member of the Engineering/Robotics Team of White Oaks Secondary School.",
+    points: [
+      "Programmed and built competitive robotics models, integrating hardware and software interfaces.",
+      "Utilized computer hardware skills and project management to coordinate assembly and debugging under tournament constraints."
     ]
   }
 ];
@@ -39,22 +92,23 @@ const extraCurriculars = [
     desc: "Working on low-level PCB design and electrical systems for high-performance racing."
   },
   {
-    role: "Founder & President",
-    org: "Data Science & Machine Learning Club (WOSS)",
-    desc: "Taught PyTorch and ML algorithms to students, fostering a community of AI enthusiasts."
+    role: "Member",
+    org: "RIT AI Club",
+    desc: "Exploring modern developments and building projects in AI/ML."
   },
   {
-    role: "Student Member",
-    org: "Oakville Youth Council",
-    desc: "Actively contributing to community improvement and positive local impact."
+    role: "Member",
+    org: "RIT Cybersecurity Club",
+    desc: "Practicing hands-on cybersecurity labs, penetration testing, and defense strategies."
   }
 ];
 
 const certifications = [
-  { name: "Sir Isaac Newton Exam - Distinction (Top 25%)", issuer: "UWaterloo" },
-  { name: "Canadian Computing Competition - Distinction", issuer: "UWaterloo" },
-  { name: "Canadian Senior Math Contest - Distinction", issuer: "UWaterloo" },
-  { name: "Standard First Aid CPR/AED Level C", issuer: "Red Cross" }
+  { name: "Dean's List", issuer: "Rochester Institute of Technology" },
+  { name: "Honor Roll Student (All Grades 9-12)", issuer: "White Oaks SS (Jun 2025)" },
+  { name: "Certificate of Distinction (Top 25% - CCC)", issuer: "University of Waterloo (Feb 2025)" },
+  { name: "Sir Isaac Newton Exam - Distinction (Top 25%)", issuer: "University of Waterloo" },
+  { name: "Canadian Senior Math Contest - Distinction", issuer: "University of Waterloo" }
 ];
 ---
 
@@ -112,7 +166,7 @@ const certifications = [
                   <h3>{edu.school}</h3>
                   <span class="date">{edu.period}</span>
                 </div>
-                <p class="card-desc">{edu.degree} | GPA: {edu.gpa}</p>
+                <p class="card-desc">{edu.degree} | {edu.gpa}</p>
                 <h4 class="edu-sub-title">Extracurriculars</h4>
                 <ul>
                   {edu.highlights.map(h => <li>{h}</li>)}

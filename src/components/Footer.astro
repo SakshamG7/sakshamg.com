@@ -19,7 +19,7 @@ import Social from './Social.astro';
       <div class="carbon-badge" id="carbon-badge">
         <div class="wcb-row-top">
           <a href="https://www.websitecarbon.com/website/sakshamg-com/" target="_blank" rel="noopener noreferrer" class="wcb-btn">
-            <span id="carbon-grams">0.00</span>g CO₂/view
+            <span id="carbon-grams">0.009</span>g CO₂/view
           </a>
           <span class="wcb-label">Website Carbon</span>
         </div>
@@ -83,7 +83,7 @@ import Social from './Social.astro';
   }
   
   .carbon-badge {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 0.5rem;
     background: rgba(28, 25, 23, 0.45);
@@ -143,49 +143,3 @@ import Social from './Social.astro';
     font-size: 0.9rem;
   }
 </style>
-
-<script>
-  interface CarbonData {
-    c: number;
-    p: number;
-  }
-
-  const currentUrl = encodeURIComponent(window.location.href);
-  const carbonBadge = document.getElementById("carbon-badge");
-  const carbonPercent = document.getElementById("carbon-percent");
-  const carbonGrams = document.getElementById("carbon-grams");
-
-  function applyData(data: CarbonData) {
-    if (!carbonPercent || !carbonGrams || !carbonBadge) return;
-    carbonPercent.textContent = data.p.toString();
-    carbonGrams.textContent = data.c.toFixed(3);
-    carbonBadge.style.display = "flex";
-  }
-
-  const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname.endsWith(".local");
-
-  if (carbonBadge && carbonPercent && carbonGrams) {
-    const cachedData = sessionStorage.getItem("website-carbon-data");
-    if (cachedData) {
-      applyData(JSON.parse(cachedData));
-    } else if (isLocal) {
-      applyData({ c: 0.009, p: 99 });
-    } else {
-      fetch(`https://api.websitecarbon.com/b?url=${currentUrl}`)
-        .then(response => {
-          if (!response.ok) throw new Error("API error");
-          return response.json();
-        })
-        .then(data => {
-          if (data && typeof data.c === "number") {
-            sessionStorage.setItem("website-carbon-data", JSON.stringify(data));
-            applyData(data);
-          }
-        })
-        .catch(err => {
-          console.warn("Website Carbon API fetch failed:", err);
-          applyData({ c: 0.009, p: 99 });
-        });
-    }
-  }
-</script>

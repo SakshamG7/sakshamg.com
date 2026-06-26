@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
 const pageTitle = "Saksham Goel | CS @ RIT";
 const pageDescription = "Saksham Goel's personal website featuring AI research, software engineering projects, and updates from his Computer Science journey at RIT.";
 ---
@@ -14,6 +15,22 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={pageDescription} />
 		<title>{pageTitle}</title>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:image" content="https://aceiq.ca/_image?href=%2F_astro%2Favatar.CHtb4UzT.jpg&w=730&h=730&f=webp" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={pageTitle} />
+		<meta property="twitter:description" content={pageDescription} />
+		<meta property="twitter:image" content="https://aceiq.ca/_image?href=%2F_astro%2Favatar.CHtb4UzT.jpg&w=730&h=730&f=webp" />
+
+		<ClientRouter />
 	</head>
 	<body>
 		<Header />
@@ -76,6 +93,16 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 			<div class="project-grid">
 				<div class="project-card animate stagger-1">
 					<div class="card-glow"></div>
+					<span class="category">Systems Engineering</span>
+					<h3>GammaWave</h3>
+					<p>High-performance GBA/GBC/GB emulator with a native C/C++ FFI core translation layer and a responsive skin engine.</p>
+					<div class="tags">
+						<span class="tag">Flutter</span>
+						<span class="tag">C/C++ FFI</span>
+					</div>
+				</div>
+				<div class="project-card animate stagger-2">
+					<div class="card-glow"></div>
 					<span class="category">AI Engineering</span>
 					<h3>AceChess</h3>
 					<p>NN Chess Engine inspired by AlphaZero. Features a custom MoE & ResNet architecture for lightning-fast inference.</p>
@@ -84,7 +111,7 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 						<span class="tag">Reinforcement</span>
 					</div>
 				</div>
-				<div class="project-card animate stagger-2">
+				<div class="project-card animate stagger-3">
 					<div class="card-glow"></div>
 					<span class="category">Reasoning LLMs</span>
 					<h3>AceLM 2B</h3>
@@ -94,7 +121,7 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 						<span class="tag">Reasoning</span>
 					</div>
 				</div>
-				<div class="project-card animate stagger-3">
+				<div class="project-card animate stagger-4">
 					<div class="card-glow"></div>
 					<span class="category">Quantitative Dev</span>
 					<h3>AceMarket</h3>
@@ -102,6 +129,26 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 					<div class="tags">
 						<span class="tag">ML</span>
 						<span class="tag">Finance</span>
+					</div>
+				</div>
+				<div class="project-card animate stagger-1">
+					<div class="card-glow"></div>
+					<span class="category">Information Retrieval</span>
+					<h3>AceSearch</h3>
+					<p>Custom search engine and ranking algorithm built to index documents, model link relevance, and optimize query latency.</p>
+					<div class="tags">
+						<span class="tag">Python</span>
+						<span class="tag">PostgreSQL</span>
+					</div>
+				</div>
+				<div class="project-card animate stagger-2">
+					<div class="card-glow"></div>
+					<span class="category">AI Fine-Tuning</span>
+					<h3>UWaterloo AI</h3>
+					<p>Fine-tuned Mistral-7B model using LoRA, achieving 98% accuracy on specialized program and university knowledge base questions.</p>
+					<div class="tags">
+						<span class="tag">Mistral</span>
+						<span class="tag">LoRA</span>
 					</div>
 				</div>
 			</div>
@@ -121,7 +168,9 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 			}
 			.profile-frame {
 				width: 300px;
-				height: 300px;
+				max-width: 100%;
+				height: auto;
+				aspect-ratio: 1 / 1;
 				border-radius: 30px;
 				overflow: hidden;
 				border: 1px solid var(--border-color);
@@ -195,8 +244,11 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				background: var(--card-bg);
-				border: 1px solid var(--border-color);
+				background: rgba(28, 25, 23, 0.45);
+				backdrop-filter: blur(12px);
+				-webkit-backdrop-filter: blur(12px);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 				padding: 3rem;
 				border-radius: 24px;
 				margin: 4rem 0;
@@ -263,6 +315,9 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 			}
 
 			@media (max-width: 768px) {
+				.hero {
+					padding: 3rem 0;
+				}
 				.hero-content {
 					flex-direction: column;
 					text-align: center;
@@ -273,8 +328,16 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 				.stats-row {
 					flex-direction: column;
 					gap: 2rem;
+					padding: 2rem 1rem;
 				}
 				.stat-divider { display: none; }
+				.motto-container {
+					font-size: 1.2rem;
+					letter-spacing: 0.15rem;
+				}
+				.motto-strip {
+					margin: 3rem 0;
+				}
 			}
 		</style>
 	</body>

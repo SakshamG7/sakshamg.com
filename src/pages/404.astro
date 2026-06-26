@@ -1,0 +1,185 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
+
+const pageTitle = "Page Not Found | Saksham Goel";
+const pageDescription = "Error 404: The page you requested could not be found in the mainframe.";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageDescription} />
+    <title>{pageTitle}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content="https://aceiq.ca/_image?href=%2F_astro%2Favatar.CHtb4UzT.jpg&w=730&h=730&f=webp" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content="https://aceiq.ca/_image?href=%2F_astro%2Favatar.CHtb4UzT.jpg&w=730&h=730&f=webp" />
+
+    <ClientRouter />
+  </head>
+  <body>
+    <Header />
+    
+    <main class="animate error-container">
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">mainframe_bash</span>
+        </div>
+        <div class="terminal-body">
+          <p class="command"><span class="prompt">sakshamg.com $</span> curl -I https://sakshamg.com/requested-path</p>
+          <p class="output error-text">HTTP/1.1 404 Not Found</p>
+          <p class="output">Content-Type: text/html; charset=UTF-8</p>
+          <p class="output">Server: Cloudflare Pages</p>
+          <p class="output log-detail">Error: The specified module or resource could not be located in the directory tree.</p>
+          <p class="command cursor-line"><span class="prompt">sakshamg.com $</span> <span class="cursor">_</span></p>
+        </div>
+      </div>
+
+      <div class="cta-group">
+        <a href="/" class="btn">Return Home</a>
+      </div>
+    </main>
+
+    <Footer />
+    
+    <style>
+      .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 250px);
+        padding: 4rem 1.5rem;
+        text-align: center;
+      }
+      
+      .terminal-card {
+        width: 100%;
+        max-width: 600px;
+        background: rgba(28, 25, 23, 0.45);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.5);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 3rem;
+      }
+
+      .terminal-header {
+        background: rgba(68, 64, 60, 0.2);
+        padding: 0.75rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .dot.red { background: #ef4444; }
+      .dot.yellow { background: #eab308; }
+      .dot.green { background: #22c55e; }
+
+      .terminal-title {
+        color: #78716c;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        margin-left: 0.5rem;
+      }
+
+      .terminal-body {
+        padding: 2rem;
+        text-align: left;
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .command {
+        color: #e7e5e4;
+        margin: 0 0 1rem 0;
+      }
+      .prompt {
+        color: var(--accent-color);
+        font-weight: 700;
+      }
+      .output {
+        color: #a8a29e;
+        margin: 0 0 0.5rem 0;
+      }
+      .error-text {
+        color: #ef4444;
+        font-weight: 700;
+      }
+      .log-detail {
+        color: #78716c;
+        margin-top: 1rem;
+        border-left: 2px solid var(--border-color);
+        padding-left: 0.75rem;
+      }
+
+      .cursor-line {
+        margin-top: 2rem;
+        margin-bottom: 0;
+      }
+      .cursor {
+        animation: blink 1s step-end infinite;
+        font-weight: 800;
+        color: #22c55e;
+      }
+
+      @keyframes blink {
+        from, to { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      .cta-group {
+        display: flex;
+        justify-content: center;
+      }
+
+      .btn {
+        background: rgba(28, 25, 23, 0.45);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border-radius: 10px;
+        font-weight: 700;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        text-decoration: none;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+      .btn:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.2);
+      }
+    </style>
+  </body>
+</html>

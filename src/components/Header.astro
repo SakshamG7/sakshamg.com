@@ -1,4 +1,6 @@
 ---
+const allPosts = import.meta.glob('../pages/posts/*.md');
+const hasBlogPosts = Object.keys(allPosts).length > 0;
 ---
 
 <header class="header">
@@ -16,7 +18,7 @@
         <li><a href="/" class="nav-link">Home</a></li>
         <li><a href="/about/" class="nav-link">About</a></li>
         <li><a href="/projects/" class="nav-link">Projects</a></li>
-        <li><a href="/blog/" class="nav-link">Blog</a></li>
+        {hasBlogPosts && <li><a href="/blog/" class="nav-link">Blog</a></li>}
       </ul>
     </nav>
   </div>
@@ -44,6 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
 
   /* Logo */
@@ -54,6 +57,8 @@
     color: #e7e5e4;
     font-family: var(--font-mono);
     letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1002;
   }
   
   .logo-accent {
@@ -63,6 +68,10 @@
   }
 
   /* Navigation */
+  .nav-menu {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
   .nav-list {
     display: flex;
     gap: 2.5rem;
@@ -108,6 +117,8 @@
     background: transparent;
     border: none;
     padding: 0.5rem;
+    position: relative;
+    z-index: 1002;
   }
 
   .bar {
@@ -136,36 +147,41 @@
   @media (max-width: 768px) {
     .hamburger {
       display: block;
-      z-index: 1002;
     }
 
     .nav-menu {
       position: fixed;
       left: 0;
-      top: -120%; /* Hide completely */
-      display: flex; /* Ensure flex is active when active */
-      flex-direction: column;
-      background-color: #0c0a09;
+      top: 0;
       width: 100%;
-      padding: 6rem 0 2rem;
-      text-align: center;
-      transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
+      height: 100vh;
+      background-color: rgba(12, 10, 9, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
       z-index: 1001;
-      border-bottom: 1px solid var(--border-color);
     }
 
     .nav-menu.active {
-      top: 0;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .nav-list {
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
+      align-items: center;
     }
 
     .nav-link {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       display: inline-block;
     }
   }
@@ -176,15 +192,16 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       z-index: 999;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s;
   }
   
-  .nav-menu.active ~ .nav-overlay {
+  .nav-overlay.active {
       opacity: 1;
       pointer-events: auto;
   }
@@ -197,13 +214,18 @@
   const overlay = document.getElementById("nav-overlay");
 
   function toggleMenu() {
-    hamburger.classList.toggle("active");
+    if (!hamburger || !navMenu) return;
+    const isActive = hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
+    if (overlay) overlay.classList.toggle("active");
+    document.body.style.overflow = isActive ? "hidden" : "";
   }
 
   function closeMenu() {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
+    if (hamburger) hamburger.classList.remove("active");
+    if (navMenu) navMenu.classList.remove("active");
+    if (overlay) overlay.classList.remove("active");
+    document.body.style.overflow = "";
   }
 
   if (hamburger) {

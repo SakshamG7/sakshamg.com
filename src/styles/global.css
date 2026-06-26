@@ -68,11 +68,11 @@ code {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    translate: 0 30px;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
   }
 }
 
@@ -95,19 +95,28 @@ code {
 /* Project Cards */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
 
 .project-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
+  background: rgba(28, 25, 23, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   padding: 2rem;
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .project-card {
+    padding: 1.5rem;
+  }
 }
 
 .project-card:hover {
@@ -120,6 +129,13 @@ code {
   margin-top: 0;
   color: var(--accent-color);
   font-size: 1.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
 }
 
 .tag {
@@ -148,4 +164,21 @@ footer {
 @media (max-width: 600px) {
   h1 { font-size: 2.5rem; }
   .nav-links { gap: 1.5rem; padding: 1rem; }
+}
+
+/* Custom themed scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 99px;
+  border: 2px solid var(--bg-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
 }

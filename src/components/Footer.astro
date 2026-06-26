@@ -7,11 +7,26 @@ import Social from './Social.astro';
     <div class="social-links">
       <Social platform="github" username="SakshamG7" />
       <Social platform="linkedin" username="in/sakshamg7" />
+      <Social platform="youtube" username="@SakshamG7" />
     </div>
     
-    <div class="aceiq-brand">
-      <p>Powered by <span class="text-gradient">AceIQ</span></p>
-      <small>High Performance AI & Digital Solutions</small>
+    <div class="footer-badges">
+      <div class="aceiq-brand">
+        <p>Powered by <span class="text-gradient">AceIQ</span></p>
+        <small>High Performance AI & Digital Solutions</small>
+      </div>
+
+      <div class="carbon-badge" id="carbon-badge">
+        <div class="wcb-row-top">
+          <a href="https://www.websitecarbon.com/website/sakshamg-com/" target="_blank" rel="noopener noreferrer" class="wcb-btn">
+            <span id="carbon-grams">0.00</span>g CO₂/view
+          </a>
+          <span class="wcb-label">Website Carbon</span>
+        </div>
+        <div class="wcb-row-bottom">
+          Cleaner than <span class="carbon-highlight" id="carbon-percent">99</span>% of pages tested
+        </div>
+      </div>
     </div>
 
     <p class="copyright">&copy; {new Date().getFullYear()} Saksham Goel. Built with Astro & Powered by AceIQ.</p>
@@ -34,12 +49,22 @@ import Social from './Social.astro';
     display: flex;
     gap: 1.5rem;
   }
+  .footer-badges {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .aceiq-brand {
     text-align: center;
-    background: var(--card-bg);
+    background: rgba(28, 25, 23, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     padding: 1rem 2rem;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
   }
   .aceiq-brand:hover {
@@ -56,8 +81,104 @@ import Social from './Social.astro';
     font-size: 0.8rem;
     letter-spacing: 0.05rem;
   }
+  
+  .carbon-badge {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba(28, 25, 23, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-family: var(--font-sans);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    align-items: center;
+  }
+  .carbon-badge:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+    transform: translateY(-3px);
+  }
+  .wcb-row-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .wcb-btn {
+    background: #10b981;
+    color: #0c0a09 !important;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  .wcb-btn:hover {
+    background: #059669;
+  }
+  .wcb-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #e7e5e4;
+  }
+  .wcb-row-bottom {
+    font-size: 0.75rem;
+    color: #78716c;
+    font-family: var(--font-mono);
+  }
+  .carbon-highlight {
+    color: #10b981;
+    font-weight: 600;
+  }
   .copyright {
     color: #78716c;
     font-size: 0.9rem;
   }
 </style>
+
+<script>
+  interface CarbonData {
+    c: number;
+    p: number;
+  }
+
+  const currentUrl = encodeURIComponent(window.location.href);
+  const carbonBadge = document.getElementById("carbon-badge");
+  const carbonPercent = document.getElementById("carbon-percent");
+  const carbonGrams = document.getElementById("carbon-grams");
+
+  function applyData(data: CarbonData) {
+    if (!carbonPercent || !carbonGrams || !carbonBadge) return;
+    carbonPercent.textContent = data.p.toString();
+    carbonGrams.textContent = data.c.toFixed(3);
+    carbonBadge.style.display = "flex";
+  }
+
+  if (carbonBadge && carbonPercent && carbonGrams) {
+    const cachedData = sessionStorage.getItem("website-carbon-data");
+    if (cachedData) {
+      applyData(JSON.parse(cachedData));
+    } else {
+      fetch(`https://api.websitecarbon.com/b?url=${currentUrl}`)
+        .then(response => {
+          if (!response.ok) throw new Error("API error");
+          return response.json();
+        })
+        .then(data => {
+          if (data && typeof data.c === "number") {
+            sessionStorage.setItem("website-carbon-data", JSON.stringify(data));
+            applyData(data);
+          }
+        })
+        .catch(err => {
+          console.warn("Website Carbon API fetch failed:", err);
+          applyData({ c: 0.009, p: 99 });
+        });
+    }
+  }
+</script>

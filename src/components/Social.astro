@@ -7,16 +7,20 @@ const { platform, username } = Astro.props;
   a {
     padding: 0.5rem 1rem;
     color: var(--accent-color);
-    background-color: var(--card-bg);
+    background-color: rgba(28, 25, 23, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     text-decoration: none;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: var(--font-mono);
     font-size: 0.9rem;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-transform: capitalize;
   }
   a:hover {
     border-color: var(--accent-color);
-    background-color: #1f2937;
+    background-color: rgba(28, 25, 23, 0.6);
+    transform: translateY(-2px);
   }
 </style>

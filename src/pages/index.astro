@@ -223,21 +223,31 @@ const pageDescription = "Saksham Goel's personal website featuring AI research, 
 				gap: 1.5rem;
 			}
 			.btn {
-				background: var(--accent-color);
+				background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
 				color: #fff;
 				padding: 1rem 2.5rem;
 				border-radius: 12px;
 				font-weight: 700;
 				transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+				display: inline-block;
+				box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25);
 			}
 			.btn.secondary {
 				background: transparent;
 				color: #fff;
 				border: 1px solid var(--border-color);
+				box-shadow: none;
 			}
 			.btn:hover {
 				transform: translateY(-3px);
-				box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.3);
+				box-shadow: 0 10px 22px -5px rgba(249, 115, 22, 0.45);
+				filter: brightness(1.1);
+			}
+			.btn.secondary:hover {
+				background: rgba(255, 255, 255, 0.03);
+				border-color: var(--accent-color);
+				box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.15);
+				filter: none;
 			}
 
 			.stats-row {

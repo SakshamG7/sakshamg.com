@@ -1,5 +1,5 @@
 ---
-const allPosts = import.meta.glob('../pages/posts/*.md');
+const allPosts = (import.meta as any).glob('../pages/posts/*.md');
 const hasBlogPosts = Object.keys(allPosts).length > 0;
 ---
 

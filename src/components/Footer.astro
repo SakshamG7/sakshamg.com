@@ -162,10 +162,14 @@ import Social from './Social.astro';
     carbonBadge.style.display = "flex";
   }
 
+  const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname.endsWith(".local");
+
   if (carbonBadge && carbonPercent && carbonGrams) {
     const cachedData = sessionStorage.getItem("website-carbon-data");
     if (cachedData) {
       applyData(JSON.parse(cachedData));
+    } else if (isLocal) {
+      applyData({ c: 0.009, p: 99 });
     } else {
       fetch(`https://api.websitecarbon.com/b?url=${currentUrl}`)
         .then(response => {

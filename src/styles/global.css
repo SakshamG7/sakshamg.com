@@ -36,11 +36,11 @@ h1, h2, h3 {
   color: #ffffff;
   margin-top: 2rem;
   font-weight: 800;
+  line-height: 1.2;
 }
 
 h1 {
   font-size: 3.5rem;
-  line-height: 1;
   background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -162,8 +162,25 @@ footer {
 }
 
 @media (max-width: 600px) {
-  h1 { font-size: 2.5rem; }
-  .nav-links { gap: 1.5rem; padding: 1rem; }
+  body {
+    padding: 5rem 1rem 0;
+  }
+  main {
+    padding: 5rem 1rem 2rem;
+  }
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.35rem; }
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: calc(100% - 1rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .project-card {
+    padding: 1.25rem;
+  }
 }
 
 /* Custom themed scrollbar */

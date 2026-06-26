@@ -34,9 +34,9 @@ const experience = [
     period: "May 2026 - Present · 2 mos",
     description: "Developing the Angstrom Company Website and creating/deploying AI agents.",
     points: [
-      "Developing the Angstrom Company Website.",
-      "Creating and Deploying AI Agents to accelerate employee workflows.",
-      "Skills: Web Development, Artificial Intelligence (AI) and +2 skills"
+      "Designing and developing the company website with modern responsive design and optimal SEO.",
+      "Creating and deploying custom AI agents that automate administrative workflows, accelerating employee productivity.",
+      "Optimizing cloud infrastructure on AWS, reducing operational website usage and platform hosting costs."
     ]
   },
   {
@@ -177,20 +177,7 @@ const certifications = [
                 </div>
                 <p class="card-desc">{exp.description}</p>
                 <ul>
-                  {exp.points.map(p => {
-                    if (p.startsWith("Skills:")) {
-                      const skillList = p.replace("Skills:", "").split(",").map(s => s.trim());
-                      return (
-                        <li class="skills-line">
-                          <strong>Skills:</strong>
-                          <div class="skills-chips">
-                            {skillList.map(s => <span class="skill-chip">{s}</span>)}
-                          </div>
-                        </li>
-                      );
-                    }
-                    return <li>{p}</li>;
-                  })}
+                  {exp.points.map(p => <li>{p}</li>)}
                 </ul>
               </div>
             ))}
@@ -318,37 +305,7 @@ const certifications = [
         margin: 0 0.5rem;
       }
       .card-desc { color: #a8a29e; font-weight: 600; margin-bottom: 1rem; }
-      .skills-line {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        list-style: none;
-        padding-left: 0 !important;
-      }
-      .skills-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-      .skill-chip {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        background: rgba(16, 185, 129, 0.05);
-        color: #10b981;
-        border: 1px solid rgba(16, 185, 129, 0.2);
-        padding: 0.2rem 0.6rem;
-        border-radius: 6px;
-        transition: all 0.3s ease;
-        display: inline-block;
-      }
-      .skill-chip:hover {
-        background: #10b981;
-        color: #0c0a09;
-        box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
-        transform: translateY(-1px);
-      }
-      
+
       ul { padding-left: 1.2rem; }
       li { color: #d6d3d1; margin-bottom: 0.5rem; font-size: 0.95rem; }
 
